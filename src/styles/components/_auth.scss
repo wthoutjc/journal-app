@@ -1,0 +1,324 @@
+.auth__container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.auth_img-container {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 0;
+}
+.auth_img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.auth__form {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.auth__form-content {
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  height: 800px;
+  display: flex;
+  border-radius: 1em;
+  position: absolute;
+  background-color: #192a5662;
+  padding: 4em;
+  box-sizing: border-box;
+}
+.auth__register,
+.auth__login {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  border-radius: 1em;
+  overflow: hidden;
+  position: relative;
+  background-color: $whitePrimary;
+}
+.auth__login {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.auth__register-hub,
+.auth__login-hub {
+  width: 40%;
+}
+.auth__register-form,
+.auth__login-form {
+  width: 60%;
+  height: 100%;
+}
+.auth__register-form,
+.auth__login-form {
+  background-color: $whitePrimary;
+  color: $bluePrimary;
+  box-sizing: border-box;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.auth__register-hub,
+.auth__login-hub {
+  background-color: $bluePrimary;
+  color: $whitePrimary;
+  box-sizing: border-box;
+  padding: 1em 2em 1em 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+/*BLANCOS*/
+.auth__register-form {
+  animation: slideToLeft2 0.7s ease-in-out;
+}
+.auth__login-form {
+  animation: slideToRight2 0.7s ease-in-out;
+}
+/*MORADOS*/
+.auth__login-hub {
+  animation: slideToLeft 0.7s ease-out;
+}
+.auth__register-hub {
+  animation: slideToRight 0.7s ease-out;
+}
+.auth__login-form > *,
+.auth__register-form > * {
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+.auth__login-hub > *,
+.auth__register-hub > * {
+  animation: opacityTransition 0.7s ease-out;
+  margin-bottom: 1.2em;
+  text-align: center;
+}
+
+.auth__login-hub > button,
+.auth__register-hub > button {
+  padding: 1em;
+  box-sizing: border-box;
+  width: 40%;
+  background-color: inherit;
+  color: $whitePrimary;
+  border-radius: 2em;
+  cursor: pointer;
+  border: 1px solid $whitePrimary;
+}
+
+.auth__register-form > form,
+.auth__login-form > form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth__register-form form .auth__input-data,
+.auth__login-form form .auth__input-data {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 0.5em;
+  height: 100%;
+}
+
+.auth__register-form form .auth__input-data .auth_input-icon,
+.auth__login-form form .auth__input-data .auth_input-icon {
+  background-color: $whiteSecondary;
+  padding: 0.7em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  display: flex;
+  color: $blueLight;
+  border-start-start-radius: 0.5em;
+  border-end-start-radius: 0.5em;
+}
+
+.auth__register-form form .auth__input-data input,
+.auth__login-form form .auth__input-data input {
+  background-color: $whiteSecondary;
+  border: none;
+  padding: 0.8em;
+  color: $bluePrimary;
+  box-sizing: border-box;
+  width: 60%;
+  margin-bottom: 0.6em;
+  display: flex;
+  border-end-end-radius: 0.5em;
+  border-start-end-radius: 0.5em;
+  outline: none;
+}
+
+.auth__register-form form .auth__input-data input::placeholder,
+.auth__login-form form .auth__input-data input::placeholder {
+  color: $blueLight;
+}
+
+.auth__register-form form button,
+.auth__login-form form button {
+  background-color: $bluePrimary;
+  color: $whitePrimary;
+  padding: 1.1em;
+  border-radius: 2em;
+  width: 27%;
+  border: none;
+  cursor: pointer;
+  &:disabled {
+    background-color: lighten($color: $bluePrimary, $amount: 20);
+  }
+}
+
+.auth__register-form span,
+.auth__login-form span {
+  color: $blueLight;
+}
+
+.auth__register-form form a,
+.auth__login-form form a {
+  margin-bottom: 0.6em;
+  text-decoration: none;
+  color: $bluePrimary;
+}
+
+.auth__with-google {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 0.3em;
+}
+
+.auth__with-google .auth__google-icon {
+  border-radius: 50%;
+  border: 1px solid $blueLight;
+  color: $bluePrimary;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0.3em;
+  font-size: 140%;
+  font-weight: 600;
+  background-color: inherit;
+  cursor: pointer;
+}
+.auth__loading::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  top: 0;
+  border: 2px solid $blueLight;
+  animation: loading-auth 1s infinite alternate;
+}
+@media all and (max-width: 769px) {
+  .auth__container {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .auth__form-content {
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .auth__form {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .auth__form-content > div {
+    position: relative;
+  }
+  .auth__form-content > div {
+    flex-direction: column-reverse;
+    align-items: center;
+    border-radius: 0;
+  }
+  .auth__form-content > div > div:last-child {
+    padding: 0.6em 0.2em 0.2em 0.2em;
+  }
+  .auth__form-content > div > div {
+    width: 100%;
+  }
+  .auth__form-content > div > div:last-child h1 {
+    font-size: 120%;
+  }
+  .auth__form-content > div > div .auth__sign-btn,
+  .auth__form-content > div > div:last-child button {
+    padding: 0.8em;
+    width: 220px;
+  }
+  .auth__form-content > div > div:last-child > p {
+    display: none;
+  }
+  .auth_img-container {
+    position: relative;
+    width: 100%;
+    max-height: 100px;
+  }
+}
+
+@keyframes opacityTransition {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideToLeft {
+  0% {
+    transform: translateX(140%);
+  }
+  50% {
+    width: 70%;
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideToRight {
+  0% {
+    transform: translateX(-140%);
+  }
+  50% {
+    width: 70%;
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideToLeft2 {
+  0% {
+    transform: translateX(70%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes slideToRight2 {
+  0% {
+    transform: translateX(-70%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

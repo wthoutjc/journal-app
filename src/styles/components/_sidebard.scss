@@ -1,0 +1,303 @@
+.sidebar__main {
+  width: 70px;
+  background-color: $bluePrimary;
+  color: $whitePrimary;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sidebar__main > button {
+  background-color: inherit;
+  padding-top: 0.8em;
+  color: $whitePrimary;
+  border: none;
+  font-size: 120%;
+}
+.sidebar__responsive {
+  display: none !important;
+}
+// animation: name duration timing-function delay iteration-count direction fill-mode;
+.expand-effect {
+  animation: expand 0.5s ease-out forwards;
+}
+.compress-effect {
+  animation: compress 0.2s linear forwards;
+}
+
+.sidebar__container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+}
+.sidebar__container .sidebar__expanded > .sidebar__expanded-header,
+.sidebar__container .sidebar__compress > .sidebar__compress-header {
+  position: sticky;
+  top: 0;
+  z-index: 2000;
+}
+/*Tanto expand como compress*/
+.sidebar__container > div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+.sidebar__container > div > div {
+  width: 100%;
+}
+/*SOLO COMPRESS*/
+.sidebar__container .sidebar__compress {
+  display: flex;
+  align-items: center;
+}
+.sidebar__container .sidebar__compress > .sidebar__expanded-header {
+  position: sticky;
+  top: 0;
+}
+.sidebar__container .sidebar__compress > div {
+  box-sizing: border-box;
+  padding: 0.6em;
+}
+.sidebar__container .sidebar__compress > div a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.4em;
+  border-radius: 0.4em;
+  font-size: 130%;
+  text-decoration: none;
+  color: $grayPrimary;
+  &:hover {
+    background-color: lighten($color: $bluePrimary, $amount: 10);
+    color: $whitePrimary;
+    transition: all 0.2s;
+  }
+  &:active {
+    background-color: lighten($color: $bluePrimary, $amount: 10);
+    color: $whitePrimary;
+    transition: all 0.2s;
+    box-shadow: 0px 0px 5px 0px black;
+  }
+}
+/*SOLO EXPANDED*/
+.sidebar__hamburger {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0.5em;
+}
+.sidebar__hamburger.active {
+  justify-content: center;
+}
+.sidebar__hamburger > button {
+  background-color: inherit;
+  color: $whitePrimary;
+  border: none;
+  font-size: 100%;
+}
+.sidebar__container .sidebar__expanded {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.sidebar__container .sidebar__expanded .sidebar__expanded-header {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  box-sizing: border-box;
+  padding: 0.3em;
+  align-items: center;
+  margin-bottom: 0.4em;
+}
+.sidebar__container .sidebar__expanded .sidebar__expanded-header h4 {
+  user-select: none;
+}
+.sidebar__container .sidebar__expanded .sidebar__expanded-header button {
+  justify-content: space-evenly;
+  font-size: 80%;
+  color: $whitePrimary;
+  border: none;
+  background-color: lighten($color: $bluePrimary, $amount: 10);
+  display: flex;
+  width: 60%;
+  align-items: center;
+  padding: 0.5em;
+  border-radius: 0.4em;
+  &:hover {
+    background-color: lighten($color: $redPrimary, $amount: 10);
+    color: $whitePrimary;
+    transition: all 0.2s;
+  }
+}
+.sidebar__container
+  .sidebar__expanded
+  .sidebar__expanded-body
+  .sidebar__expanded-icon {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sidebar__container
+  .sidebar__expanded
+  .sidebar__expanded-body
+  .sidebar__expanded-icon
+  a {
+  color: $whitePrimary;
+  width: 90%;
+  box-sizing: border-box;
+  padding: 0.5em;
+  display: flex;
+  border-radius: 0.5em;
+  &:hover {
+    background-color: lighten($color: $bluePrimary, $amount: 10);
+    color: $whitePrimary;
+    transition: all 0.2s;
+  }
+  &:active {
+    background-color: lighten($color: $bluePrimary, $amount: 10);
+    color: $whitePrimary;
+    transition: all 0.2s;
+    box-shadow: 0px 0px 5px 0px black;
+  }
+}
+.sidebar__container
+  .sidebar__expanded
+  .sidebar__expanded-body
+  .sidebar__expanded-icon
+  a
+  p {
+  margin-left: 1em;
+}
+
+.sidebar__container .sidebar__expanded .sidebar__expanded-body span {
+  justify-content: flex-start;
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 0.9em;
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
+  font-size: 90%;
+  color: $grayPrimary;
+  font-style: oblique;
+  user-select: none;
+}
+.sidebar_expanded-journals {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 1em;
+}
+
+/*nav menu*/
+.sidebar__nav-menu > span {
+  display: block;
+  width: 17px;
+  height: 2px;
+  border-radius: 50%;
+  background-color: $whitePrimary;
+}
+.sidebar__nav-menu > span:not(:last-child) {
+  margin-bottom: 0.2em;
+}
+.sidebar__nav-menu,
+.sidebar__nav-menu > span {
+  transition: all 0.3s ease-in-out;
+}
+.sidebar__nav-menu.active {
+  transition-delay: 0.5s;
+  transform: rotate(45deg);
+}
+.sidebar__nav-menu.active > span:nth-child(2) {
+  width: 0;
+}
+.sidebar__nav-menu.active > span:nth-child(1),
+.sidebar__nav-menu.active > span:nth-child(3) {
+  transition-delay: 0.3s;
+}
+.sidebar__nav-menu.active > span:nth-child(1) {
+  transform: translateY(3px);
+}
+.sidebar__nav-menu.active > span:nth-child(3) {
+  transform: translateY(-7px) rotate(90deg);
+}
+
+@media all and (max-width: 769px) {
+  .sidebar__main {
+    position: absolute;
+    width: 90%;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 2em;
+    display: flex;
+    z-index: 20000;
+    flex-direction: row;
+    align-content: flex-start;
+    justify-content: flex-start;
+    padding: 0.3em 0.6em;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .sidebar__main button {
+    display: none;
+  }
+
+  .sidebar__expanded,
+  .sidebar__compress {
+    display: none !important;
+  }
+  .sidebar__responsive {
+    display: block !important;
+  }
+  .sidebar__responsive .sidebar__responsive-icon {
+    width: 100%;
+    display: flex !important;
+    align-content: flex-start !important;
+    justify-content: flex-start !important;
+    box-sizing: border-box;
+    padding: 0.4em;
+  }
+
+  .sidebar__responsive-icon a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: $grayPrimary;
+    padding: 0.2em;
+    border-radius: 0.4em;
+    &:active {
+      background-color: lighten($color: $bluePrimary, $amount: 10);
+      box-shadow: 1px 1px 3px 0px black;
+    }
+  }
+  .sidebar__responsive-icon a p {
+    font-size: 60%;
+  }
+}
+
+@keyframes expand {
+  0% {
+    width: 70px;
+  }
+  100% {
+    width: 390px;
+  }
+}
+
+@keyframes compress {
+  0% {
+    width: 390px;
+  }
+  100% {
+    width: 70px;
+  }
+}

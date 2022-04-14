@@ -1,0 +1,39 @@
+.notification__container {
+  width: 280px;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  padding: 0.4em;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 40000;
+  color: white;
+  animation: opacityEffect 0.5s ease-out;
+}
+
+.notification__container.notification_error {
+  background-color: $redPrimary !important;
+}
+.notification__container.notification_success {
+  background-color: $greenPrimary !important;
+}
+.notification__body,
+.notification__header {
+  padding: 0.4em;
+  box-sizing: border-box;
+}
+
+.notification__header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid white;
+}
+
+.notification__header > button {
+  background-color: inherit;
+  color: white;
+  border: none;
+  font-size: 120%;
+}

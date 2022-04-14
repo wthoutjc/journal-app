@@ -1,0 +1,87 @@
+.note__appbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.note__options {
+  width: 30%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.note__options > .note__btn-pic:first-child p {
+  font-size: 70%;
+  margin-right: 0.4em;
+}
+.note__options > .note__btn-pic:first-child {
+  background-color: $whitePrimary;
+  font-size: 120%;
+  color: $bluePrimary;
+  padding: 0.3em;
+  border-radius: 0.5em;
+}
+.note__form form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.note__form form .note__input-data {
+  width: 100%;
+  display: flex;
+}
+.note__form form .note__input-data .note__icon {
+  background-color: red;
+  background-color: $whitePrimary;
+  padding: 0.7em;
+  height: 100%;
+  box-sizing: border-box;
+  border-end-start-radius: 0.4em;
+  border-start-start-radius: 0.4em;
+  display: flex;
+}
+.note__form form .note__input-data input {
+  width: 100%;
+  background-color: $whitePrimary;
+  padding: 0.5em;
+  border-end-end-radius: 0.4em;
+  border-start-end-radius: 0.4em;
+  outline: none;
+  font-size: 110%;
+  border: none;
+  margin-bottom: 0.4em;
+}
+
+.note__form form textarea::placeholder,
+.note__form form .note__input-data input::placeholder {
+  color: $grayPrimary;
+}
+
+.note__form form textarea {
+  resize: none;
+  outline: none;
+  border: none;
+  background-color: $whitePrimary;
+  padding: 1em;
+  height: 350px;
+  border-radius: 0.4em;
+}
+
+.notes__image-container {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 0.4em;
+}
+.notes__image-container img {
+  height: 100%;
+  object-fit: contain;
+  box-shadow: 2px 2px 6px 1px black;
+}
+
+@media all and (max-width: 769px) {
+  .note__appbar {
+    justify-content: space-evenly;
+  }
+}
