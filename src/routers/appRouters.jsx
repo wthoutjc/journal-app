@@ -3,6 +3,7 @@ import { useEffect } from "react";
 
 //Components
 import JournalScreen from "../components/journal/journalScreen";
+import Loader from "../components/portal/loader";
 
 // Sub- Router
 import AuthRouters from "./authRouters";
@@ -13,13 +14,15 @@ import PublicRoutes from "./publicRoutes";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 //Redux
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 // Actions
 import { login } from "../actions/auth";
 import { useState } from "react";
+import { startLoadingNotes } from "../actions/notes";
 
 const AppRouters = () => {
+  const { loading } = useSelector((state) => state.ui);
   const dispatch = useDispatch();
 
   const [checking, setChecking] = useState(true);
@@ -27,23 +30,23 @@ const AppRouters = () => {
 
   useEffect(() => {
     const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, async (user) => {
       setChecking(false);
       if (user?.uid) {
         setIsLoggedIn(true);
+
         dispatch(login(user.uid, user.displayName));
+
+        dispatch(startLoadingNotes(user.uid));
       } else {
         setIsLoggedIn(false);
       }
     });
   }, [dispatch]);
 
-  if (checking)
-    return (
-      <>
-        <h1>Wait..</h1>
-      </>
-    );
+  if (loading || checking) {
+    return <Loader />;
+  }
 
   return (
     <BrowserRouter>

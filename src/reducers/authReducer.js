@@ -1,6 +1,11 @@
 // Types
 import types from "../types/types";
 
+// const initialState = {
+//   uid: null,
+//   name: null,
+// }
+
 const authReducer = (state = {}, action) => {
   switch (action.type) {
     case types.login:

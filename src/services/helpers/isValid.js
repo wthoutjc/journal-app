@@ -3,7 +3,7 @@ import validator from "validator";
 const registeredValid = ({name, email, password, password2}) => {
   let valid = {
     error: true,
-    tittle: "Error",
+    title: "Error",
     message: null,
   };
 
@@ -30,7 +30,7 @@ const registeredValid = ({name, email, password, password2}) => {
   } else {
     valid = {
       error: false,
-      tittle: "Success",
+      title: "Success",
       message: "Successfully registered!",
     };
   }

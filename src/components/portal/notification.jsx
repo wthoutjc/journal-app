@@ -5,19 +5,41 @@ import { useState, useEffect } from "react";
 import * as AiIcons from "react-icons/ai";
 
 // Redux
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
+//Action
+import { setNotificationAction } from "../../actions/ui";
 
 const $portalDOM = document.getElementById("portal");
 
 const Notification = () => {
-  const { error, tittle, message } = useSelector((state) => state.ui);
+  const { error, title, message } = useSelector((state) => state.ui);
   const [render, setRender] = useState(false);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (message) {
       setRender(true);
+      if (render) {
+        setTimeout(() => {
+          handleClose();
+        }, 3000);
+      }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [message]);
+
+  const handleClose = () => {
+    setRender(false);
+    dispatch(
+      setNotificationAction({
+        error: false,
+        title: null,
+        message: null,
+      })
+    );
+  };
 
   return ReactDOM.createPortal(
     <>
@@ -30,8 +52,8 @@ const Notification = () => {
           }
         >
           <div className="notification__header">
-            <h4>{tittle}</h4>
-            <button onClick={() => setRender(false)}>
+            <h4>{title}</h4>
+            <button onClick={handleClose}>
               <AiIcons.AiOutlineClose />
             </button>
           </div>

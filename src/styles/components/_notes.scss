@@ -1,3 +1,7 @@
+.note__screen {
+  width: 100%;
+  display: flex;
+}
 .note__appbar {
   width: 100%;
   display: flex;
@@ -5,32 +9,54 @@
   align-items: center;
 }
 .note__options {
-  width: 30%;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-.note__options > .note__btn-pic:first-child p {
+.note__options > .note__btn-pic p {
   font-size: 70%;
   margin-right: 0.4em;
 }
-.note__options > .note__btn-pic:first-child {
+.note__options > .note__btn-pic {
   background-color: $whitePrimary;
   font-size: 120%;
   color: $bluePrimary;
   padding: 0.3em;
   border-radius: 0.5em;
+  cursor: pointer;
+  display: flex;
+  margin-right: 0.4em;
+  &:hover {
+    box-shadow: 1px 1px 4px 0px black;
+  }
+  &:active {
+    top: 4px;
+  }
+  &:hover:first-child {
+    background-color: #1e90ff;
+    color: $whiteSecondary;
+    transition: 0.2s;
+  }
+  &:hover:nth-child(2) {
+    background-color: lighten($color: $greenPrimary, $amount: 12);
+    transition: 0.2s;
+  }
+  &:hover:last-child {
+    background-color: lighten($color: $redPrimary, $amount: 10);
+    color: $whiteSecondary;
+    transition: 0.2s;
+  }
 }
-.note__form form {
+.note__form .note__container {
   width: 100%;
   display: flex;
   flex-direction: column;
 }
-.note__form form .note__input-data {
+.note__form .note__container .note__input-data {
   width: 100%;
   display: flex;
 }
-.note__form form .note__input-data .note__icon {
+.note__form .note__container .note__input-data .note__icon {
   background-color: red;
   background-color: $whitePrimary;
   padding: 0.7em;
@@ -40,7 +66,7 @@
   border-start-start-radius: 0.4em;
   display: flex;
 }
-.note__form form .note__input-data input {
+.note__form .note__container .note__input-data input {
   width: 100%;
   background-color: $whitePrimary;
   padding: 0.5em;
@@ -52,12 +78,12 @@
   margin-bottom: 0.4em;
 }
 
-.note__form form textarea::placeholder,
-.note__form form .note__input-data input::placeholder {
+.note__form .note__container textarea::placeholder,
+.note__form .note__container .note__input-data input::placeholder {
   color: $grayPrimary;
 }
 
-.note__form form textarea {
+.note__form .note__container textarea {
   resize: none;
   outline: none;
   border: none;

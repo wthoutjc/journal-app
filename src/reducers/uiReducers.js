@@ -3,18 +3,18 @@ import types from "../types/types";
 const initialState = {
   loading: false,
   error: null,
-  tittle: null,
+  title: null,
   message: null,
 };
 
 const uiReducer = (state = initialState, action) => {
-  const { loading, error, tittle, message } = action.payload || initialState;
+  const { loading, error, title, message } = action.payload || initialState;
   switch (action.type) {
     case types.uiNotification:
       return {
         ...state,
         error,
-        tittle,
+        title,
         message,
       };
     case types.uiLoading:

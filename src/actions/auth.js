@@ -9,6 +9,7 @@ import {
 import { googleAuthProvider } from "../firebase/firebaseConfig";
 
 import types from "../types/types";
+import { cleanLogoutAction } from "./notes";
 
 // Actions
 import { setNotificationAction, loadingAction } from "./ui";
@@ -28,7 +29,7 @@ const startLoginEmailPassword = (email, password) => {
       dispatch(
         setNotificationAction({
           error: true,
-          tittle: `Error: ${error.code} `,
+          title: `Error: ${error.code} `,
           message: error.message,
         })
       );
@@ -47,7 +48,7 @@ const startGoogleLogin = () => {
       dispatch(
         setNotificationAction({
           error: true,
-          tittle: `Error: ${error.code} `,
+          title: `Error: ${error.code} `,
           message: error.message,
         })
       );
@@ -73,7 +74,7 @@ const startRegisterForm = (email, password, name) => {
       dispatch(
         setNotificationAction({
           error: true,
-          tittle: `Error: ${error.code} `,
+          title: `Error: ${error.code} `,
           message: error.message,
         })
       );
@@ -95,6 +96,7 @@ const startLogout = () => {
     const auth = getAuth();
     await signOut(auth);
     dispatch(logout());
+    dispatch(cleanLogoutAction());
   };
 };
 

@@ -1,24 +1,64 @@
+import { useEffect, useRef } from "react";
 // Icons
 import * as BsIcons from "react-icons/bs";
 
+// Hooks
+import useForm from "../../hooks/useForm";
+
+// Redux
+import { useDispatch, useSelector } from "react-redux";
+import { activeNoteAction } from "../../actions/notes";
+
 const NoteForm = () => {
+  const { active } = useSelector((state) => state.notes);
+
+  const dispatch = useDispatch();
+
+  const [values, handleInputChange, reset] = useForm(active);
+
+  const { title, body, url } = active;
+
+  const activeId = useRef(active.id);
+
+  useEffect(() => {
+    if (active.id !== activeId.current) {
+      reset(active);
+      activeId.current = active.id;
+    }
+  }, [active, reset]);
+
+  useEffect(() => {
+    dispatch(activeNoteAction(values.id, { ...values }));
+  }, [values, dispatch]);
+
   return (
     <div className="note__form">
-      <form action="">
+      <div className="note__container">
         <div className="note__input-data">
           <div className="note__icon">
             <BsIcons.BsJournalBookmarkFill />
           </div>
-          <input type="text" placeholder="Tittle" autoComplete="off" />
-        </div>
-        <textarea name="" placeholder="Type something"></textarea>
-        <div className="notes__image-container">
-          <img
-            src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
-            alt=""
+          <input
+            type="text"
+            placeholder="Title"
+            autoComplete="off"
+            name="title"
+            onChange={handleInputChange}
+            value={title || ""}
           />
         </div>
-      </form>
+        <textarea
+          placeholder="Type something"
+          name="body"
+          onChange={handleInputChange}
+          value={body || ""}
+        ></textarea>
+        {url && (
+          <div className="notes__image-container">
+            <img src={url} alt="Journal-App" />
+          </div>
+        )}
+      </div>
     </div>
   );
 };

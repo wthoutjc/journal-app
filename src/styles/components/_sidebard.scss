@@ -19,7 +19,7 @@
 }
 // animation: name duration timing-function delay iteration-count direction fill-mode;
 .expand-effect {
-  animation: expand 0.5s ease-out forwards;
+  animation: expand 0.3s ease forwards;
 }
 .compress-effect {
   animation: compress 0.2s linear forwards;
@@ -36,6 +36,8 @@
   position: sticky;
   top: 0;
   z-index: 2000;
+  display: flex;
+  justify-content: center;
 }
 /*Tanto expand como compress*/
 .sidebar__container > div {
@@ -60,15 +62,18 @@
   box-sizing: border-box;
   padding: 0.6em;
 }
+.sidebar__container .sidebar__compress > div button,
 .sidebar__container .sidebar__compress > div a {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.4em;
   border-radius: 0.4em;
+  padding: 0.4em;
   font-size: 130%;
   text-decoration: none;
   color: $grayPrimary;
+  background-color: inherit;
+  border: none;
   &:hover {
     background-color: lighten($color: $bluePrimary, $amount: 10);
     color: $whitePrimary;
@@ -108,7 +113,7 @@
   width: 100%;
   justify-content: space-around;
   box-sizing: border-box;
-  padding: 0.3em;
+  padding: 0.8rem;
   align-items: center;
   margin-bottom: 0.4em;
 }
@@ -145,6 +150,11 @@
   .sidebar__expanded
   .sidebar__expanded-body
   .sidebar__expanded-icon
+  button,
+.sidebar__container
+  .sidebar__expanded
+  .sidebar__expanded-body
+  .sidebar__expanded-icon
   a {
   color: $whitePrimary;
   width: 90%;
@@ -152,6 +162,8 @@
   padding: 0.5em;
   display: flex;
   border-radius: 0.5em;
+  background-color: inherit;
+  border: none;
   &:hover {
     background-color: lighten($color: $bluePrimary, $amount: 10);
     color: $whitePrimary;
@@ -164,6 +176,12 @@
     box-shadow: 0px 0px 5px 0px black;
   }
 }
+.sidebar__container
+  .sidebar__expanded
+  .sidebar__expanded-body
+  .sidebar__expanded-icon
+  button
+  p,
 .sidebar__container
   .sidebar__expanded
   .sidebar__expanded-body
@@ -266,6 +284,7 @@
     padding: 0.4em;
   }
 
+  .sidebar__responsive-icon button,
   .sidebar__responsive-icon a {
     display: flex;
     flex-direction: column;
@@ -274,11 +293,14 @@
     color: $grayPrimary;
     padding: 0.2em;
     border-radius: 0.4em;
+    background-color: inherit;
+    border: none;
     &:active {
       background-color: lighten($color: $bluePrimary, $amount: 10);
       box-shadow: 1px 1px 3px 0px black;
     }
   }
+  .sidebar__responsive-icon button p,
   .sidebar__responsive-icon a p {
     font-size: 60%;
   }
@@ -289,13 +311,13 @@
     width: 70px;
   }
   100% {
-    width: 390px;
+    width: 350px;
   }
 }
 
 @keyframes compress {
   0% {
-    width: 390px;
+    width: 350px;
   }
   100% {
     width: 70px;

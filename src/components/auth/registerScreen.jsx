@@ -17,7 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 // Actions
 import { setNotificationAction } from "../../actions/ui";
-import { startRegisterForm } from "../../actions/auth";
+import { startGoogleLogin, startRegisterForm } from "../../actions/auth";
 
 const RegisterScreen = () => {
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ const RegisterScreen = () => {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    // error, tittle,
+    // error, title,
     const valid = registeredValid(values);
     dispatch(setNotificationAction(valid));
     const { error } = valid;
@@ -41,6 +41,11 @@ const RegisterScreen = () => {
     if (!error) {
       dispatch(startRegisterForm(email, password, name));
     }
+  };
+
+  const handleGoogleLogin = (e) => {
+    e.preventDefault();
+    dispatch(startGoogleLogin());
   };
 
   return (
@@ -52,7 +57,7 @@ const RegisterScreen = () => {
       >
         <h1>Create Account</h1>
         <div className="auth__with-google">
-          <button className="auth__google-icon">
+          <button className="auth__google-icon" onClick={handleGoogleLogin}>
             <AiIcons.AiOutlineGooglePlus />
           </button>
         </div>

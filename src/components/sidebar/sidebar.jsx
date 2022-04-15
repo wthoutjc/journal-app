@@ -7,13 +7,19 @@ import * as RiIcons from "react-icons/ri";
 
 // Components
 import JournalEntries from "../journal/journalEntries";
-import { useDispatch } from "react-redux";
 
 //Actions
 import { startLogout } from "../../actions/auth";
 
+// Redux
+import { useDispatch, useSelector } from "react-redux";
+
+// Actions
+import { startNewNote} from "../../actions/notes";
+
 const Sidebar = () => {
   const dispatch = useDispatch();
+  const { name } = useSelector((state) => state.auth);
 
   const sidebar = useRef();
   const [expanded, setExpanded] = useState(null);
@@ -25,27 +31,16 @@ const Sidebar = () => {
         sidebar.current.setAttribute("class", "sidebar__main compress-effect");
   }, [expanded]);
 
-  useEffect(() => {
-    if (expanded) {
-      const effectSidebar = sidebar.current;
-      const handleCompressSideBar = () => {
-        setExpanded(false);
-      };
-
-      effectSidebar.addEventListener("mouseleave", handleCompressSideBar);
-
-      return () => {
-        effectSidebar.removeEventListener("mouseleave", handleCompressSideBar);
-      };
-    }
-  }, [expanded]);
-
   const handleSidebar = () => {
     setExpanded(!expanded);
   };
 
   const handleLogout = () => {
     dispatch(startLogout());
+  };
+
+  const handleAdd = () => {
+    dispatch(startNewNote());
   };
 
   return (
@@ -76,7 +71,7 @@ const Sidebar = () => {
         {expanded ? (
           <div className="sidebar__expanded">
             <div className="sidebar__expanded-header">
-              <h4>Juan</h4>
+              <h4>{name}</h4>
               <button onClick={handleLogout}>
                 Log Out
                 <CgIcons.CgLogOut />
@@ -84,10 +79,10 @@ const Sidebar = () => {
             </div>
             <div className="sidebar__expanded-body">
               <div className="sidebar__expanded-icon">
-                <a href="a">
+                <button onClick={handleAdd}>
                   <BiIcons.BiCalendar />
                   <p>New entry</p>
-                </a>
+                </button>
               </div>
               <span>Recent journals</span>
               <div className="sidebar_expanded-journals">
@@ -99,9 +94,9 @@ const Sidebar = () => {
         ) : (
           <div className="sidebar__compress">
             <div className="sidebar__compress-header">
-              <a href="a">
+              <button onClick={handleAdd}>
                 <BiIcons.BiCalendar />
-              </a>
+              </button>
             </div>
             <div className="sidebar__compress-body"></div>
             <div className="sidebar__compress-footer"></div>
@@ -109,10 +104,10 @@ const Sidebar = () => {
         )}
         <div className="sidebar__responsive">
           <div className="sidebar__responsive-icon">
-            <a href="a">
+            <button onClick={handleAdd}>
               <BiIcons.BiCalendar />
               <p>New entry</p>
-            </a>
+            </button>
           </div>
         </div>
       </div>

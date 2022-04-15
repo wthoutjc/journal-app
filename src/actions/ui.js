@@ -1,10 +1,10 @@
 import types from "../types/types";
 
-const setNotificationAction = ({ error, tittle, message }) => ({
+const setNotificationAction = ({ error, title, message }) => ({
   type: types.uiNotification,
   payload: {
     error,
-    tittle,
+    title,
     message,
   },
 });
