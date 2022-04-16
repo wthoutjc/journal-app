@@ -27,10 +27,14 @@ const startNewNote = () => {
       date: new Date().getTime(),
     };
 
-    const doc = await addDoc(collection(db, uid, "journal/notes"), newNote);
+    try {
+      const doc = await addDoc(collection(db, uid, "journal/notes"), newNote);
 
-    dispatch(activeNoteAction(doc.id, newNote));
-    dispatch(addNewNote(doc.id, newNote));
+      dispatch(activeNoteAction(doc.id, newNote));
+      dispatch(addNewNote(doc.id, newNote));
+    } catch (error) {
+      console.error(error);
+    }
   };
 };
 

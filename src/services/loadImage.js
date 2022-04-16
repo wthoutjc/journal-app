@@ -1,5 +1,7 @@
-const CLOUD_NAME = "ddmeptk5c";
-const UPLOAD_PRESET = "react-journal";
+const { REACT_APP_CLOUD_NAME, REACT_APP_UPLOAD_PRESET } = process.env;
+
+const CLOUD_NAME = REACT_APP_CLOUD_NAME;
+const UPLOAD_PRESET = REACT_APP_UPLOAD_PRESET;
 
 const loadImageService = async (file) => {
   const cloudUrl = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/upload`;
